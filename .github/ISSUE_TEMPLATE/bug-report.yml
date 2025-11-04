@@ -1,0 +1,122 @@
+name: Bug Report
+description: Report a problem with the activities website
+title: "[Bug]: "
+labels: ["bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Report
+        Help us fix issues by providing detailed information about the problem you encountered.
+        
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the Bug
+      description: What went wrong? Be as specific as possible.
+      placeholder: Explain what happened and what you expected to happen instead
+    validations:
+      required: true
+      
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can we see this bug happen?
+      placeholder: |
+        1. Go to the website
+        2. Click on...
+        3. See error...
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: bug-area
+    attributes:
+      label: Which part of the website has the issue?
+      description: Select the area where you noticed the problem
+      options:
+        - Activity list/display
+        - Student registration
+        - Teacher login
+        - Filtering (by category, day, or time)
+        - Search functionality
+        - Other
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: severity
+    attributes:
+      label: How severe is this issue?
+      description: Help us prioritize
+      options:
+        - Critical - Website is broken/unusable
+        - High - Major feature doesn't work
+        - Medium - Feature works but has issues
+        - Low - Minor visual or text issue
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+      placeholder: Describe what you expected to see or happen
+    validations:
+      required: true
+      
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or Error Messages
+      description: If applicable, add screenshots or copy any error messages
+      placeholder: Paste screenshots or error text here
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Anything else that might help?
+      placeholder: Browser used, time of day, any other relevant details
+    validations:
+      required: false
+      
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this is fixed?
+      value: |
+        - [ ] Bug can no longer be reproduced
+        - [ ] Expected behavior works correctly
+        - [ ] No new issues introduced
+        - [ ] Similar issues checked and resolved
+    validations:
+      required: true
+      
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Implementation Notes for Copilot
+        
+        **Investigation needed:**
+        1. Identify which files are involved based on the bug area
+        2. Reproduce the issue using the steps provided
+        3. Review related code in:
+           - HTML: `src/static/index.html`
+           - JavaScript: `src/static/app.js`
+           - CSS: `src/static/styles.css`
+           - Python API: `src/backend/routers/activities.py`, `src/backend/routers/auth.py`
+           - Database: `src/backend/database.py`
+        
+        **Fix approach:**
+        - Make minimal changes to fix the specific issue
+        - Test the fix thoroughly
+        - Ensure no regressions in related functionality
+        - Add appropriate error handling if missing

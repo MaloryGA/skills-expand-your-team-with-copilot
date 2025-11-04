@@ -1,0 +1,147 @@
+name: Add New Activity
+description: Request to add a new extracurricular activity to the system
+title: "[New Activity]: "
+labels: ["enhancement", "activity"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Add New Activity Request
+        Please provide detailed information about the new activity you want to add to the school's extracurricular activities system.
+        
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: What is the name of this activity?
+      placeholder: e.g., "Photography Club", "Volleyball Team", "Science Fair"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: Activity Description
+      description: Provide a clear description of what this activity is about
+      placeholder: What will students do in this activity? What skills will they learn?
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: activity-category
+    attributes:
+      label: Activity Category
+      description: Which category does this activity belong to?
+      options:
+        - Sports
+        - Arts
+        - Academic
+        - Community
+        - Technology
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: schedule-days
+    attributes:
+      label: Schedule - Days
+      description: Select which days this activity will meet
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+    validations:
+      required: true
+      
+  - type: input
+    id: schedule-start-time
+    attributes:
+      label: Start Time
+      description: When does the activity start? (Use 24-hour format)
+      placeholder: "15:30"
+    validations:
+      required: true
+      
+  - type: input
+    id: schedule-end-time
+    attributes:
+      label: End Time
+      description: When does the activity end? (Use 24-hour format)
+      placeholder: "17:00"
+    validations:
+      required: true
+      
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Participants
+      description: What is the maximum number of students that can join?
+      placeholder: "20"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this is complete?
+      value: |
+        - [ ] New activity appears in the activities list
+        - [ ] Activity has the correct name, description, and schedule
+        - [ ] Activity shows in the appropriate category filter
+        - [ ] Activity is filterable by the specified days
+        - [ ] Teachers can register students for this activity
+        - [ ] Maximum participant limit is enforced
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would be helpful?
+      placeholder: Special requirements, instructor information, location details, etc.
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Implementation Notes for Copilot
+        
+        **File to modify:** `src/backend/database.py`
+        
+        **What to do:**
+        1. Add the new activity to the `initial_activities` dictionary with:
+           - Activity name as the key
+           - Description from the form
+           - Schedule string in natural language format
+           - schedule_details with days array, start_time, and end_time in 24-hour format
+           - max_participants as an integer
+           - Empty participants array: `[]`
+        
+        **Example format:**
+        ```python
+        "Activity Name": {
+            "description": "Activity description here",
+            "schedule": "Days, Start Time - End Time",
+            "schedule_details": {
+                "days": ["Monday", "Wednesday"],
+                "start_time": "15:30",
+                "end_time": "17:00"
+            },
+            "max_participants": 20,
+            "participants": []
+        }
+        ```
+        
+        **Important:**
+        - Time format must be 24-hour (HH:MM)
+        - Days must match exactly: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+        - Ensure the natural language schedule string matches the schedule_details

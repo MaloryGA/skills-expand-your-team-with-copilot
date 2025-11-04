@@ -1,0 +1,121 @@
+name: UI Enhancement Request
+description: Request visual or styling improvements to the website
+title: "[UI]: "
+labels: ["enhancement", "ui"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## UI Enhancement Request
+        Suggest visual improvements to make the website look better or easier to use.
+        
+  - type: textarea
+    id: enhancement-description
+    attributes:
+      label: What visual change would you like?
+      description: Describe the UI improvement you'd like to see
+      placeholder: Be specific about colors, layout, buttons, fonts, spacing, etc.
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: ui-area
+    attributes:
+      label: Which part of the website?
+      description: Where should this change be made?
+      options:
+        - Header/title area
+        - Activity cards
+        - Filters (sidebar)
+        - Buttons
+        - Colors/theme
+        - Layout/spacing
+        - Text/fonts
+        - Entire website
+    validations:
+      required: true
+      
+  - type: textarea
+    id: current-state
+    attributes:
+      label: Current Appearance
+      description: What does it look like now?
+      placeholder: Describe the current look or attach a screenshot
+    validations:
+      required: true
+      
+  - type: textarea
+    id: desired-state
+    attributes:
+      label: Desired Appearance
+      description: What should it look like?
+      placeholder: Describe your vision or provide example images/websites
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: color-preference
+    attributes:
+      label: Color Preferences (if applicable)
+      description: Are there specific colors you want to use?
+      options:
+        - Use school colors (white and lime green)
+        - Keep current colors
+        - Suggest new colors (specify in description)
+        - Not applicable
+    validations:
+      required: false
+      
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why is this improvement needed?
+      description: What problem does this solve or what benefit does it provide?
+      placeholder: Will it be easier to read? More visually appealing? Matches school brand?
+    validations:
+      required: true
+      
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this is complete?
+      value: |
+        - [ ] Visual changes are implemented as described
+        - [ ] Changes look good on different screen sizes
+        - [ ] Text remains readable
+        - [ ] No existing functionality is broken
+        - [ ] Colors/styling is consistent across the website
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information, inspiration, or examples?
+      placeholder: Links to example websites, color codes, specific design preferences
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Implementation Notes for Copilot
+        
+        **File to modify:** `src/static/styles.css` (and potentially `src/static/index.html`)
+        
+        **What to do:**
+        1. Review the current styling for the specified area
+        2. Make CSS changes to achieve the desired appearance
+        3. Test on different screen sizes if layout changes are involved
+        4. Ensure changes don't break existing responsive design
+        
+        **Important:**
+        - Only modify HTML if absolutely necessary for structure changes
+        - Keep changes focused on the specified UI area
+        - Maintain accessibility (readable text, proper contrast)
+        - Preserve existing functionality while updating appearance
+        - If school colors are requested, use white (#ffffff) and lime green (#32CD32 or similar)
