@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: GitHub Copilot Documentation
+    url: https://docs.github.com/en/copilot
+    about: Learn more about using GitHub Copilot
+  - name: Development Guide
+    url: https://github.com/$OWNER/$REPO/blob/main/docs/how-to-develop.md
+    about: Instructions for setting up and developing the project

@@ -1,0 +1,140 @@
+name: Modify Activity Details
+description: Request to update information for an existing activity
+title: "[Modify Activity]: "
+labels: ["enhancement", "activity"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Modify Activity Request
+        Please provide information about which activity needs to be updated and what changes are needed.
+        
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: Which activity needs to be modified?
+      placeholder: e.g., "Chess Club", "Soccer Team"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: What needs to be changed?
+      description: Select the type of change needed
+      options:
+        - Change description
+        - Change schedule (days or times)
+        - Change maximum participants
+        - Change activity name
+        - Multiple changes
+    validations:
+      required: true
+      
+  - type: textarea
+    id: new-description
+    attributes:
+      label: New Description (if applicable)
+      description: Provide the updated description for the activity
+      placeholder: Leave blank if not changing the description
+    validations:
+      required: false
+      
+  - type: checkboxes
+    id: new-schedule-days
+    attributes:
+      label: New Schedule - Days (if applicable)
+      description: Select which days this activity should meet
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+    validations:
+      required: false
+      
+  - type: input
+    id: new-start-time
+    attributes:
+      label: New Start Time (if applicable)
+      description: When should the activity start? (Use 24-hour format)
+      placeholder: "15:30"
+    validations:
+      required: false
+      
+  - type: input
+    id: new-end-time
+    attributes:
+      label: New End Time (if applicable)
+      description: When should the activity end? (Use 24-hour format)
+      placeholder: "17:00"
+    validations:
+      required: false
+      
+  - type: input
+    id: new-max-participants
+    attributes:
+      label: New Maximum Participants (if applicable)
+      description: What should the new maximum number of students be?
+      placeholder: "20"
+    validations:
+      required: false
+      
+  - type: input
+    id: new-activity-name
+    attributes:
+      label: New Activity Name (if applicable)
+      description: What should the new name be?
+      placeholder: Leave blank if not changing the name
+    validations:
+      required: false
+      
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Change
+      description: Why is this change needed?
+      placeholder: Explain why this modification is necessary
+    validations:
+      required: true
+      
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this is complete?
+      value: |
+        - [ ] Activity information has been updated in the system
+        - [ ] Changes are visible on the website
+        - [ ] Activity still functions correctly (registration, filtering, etc.)
+        - [ ] Existing participants remain enrolled
+    validations:
+      required: true
+      
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Implementation Notes for Copilot
+        
+        **File to modify:** `src/backend/database.py`
+        
+        **What to do:**
+        1. Locate the activity in the `initial_activities` dictionary
+        2. Update only the fields specified in the issue:
+           - If description is provided, update the "description" field
+           - If schedule days/times are provided, update both "schedule" string and "schedule_details"
+           - If max_participants is provided, update the "max_participants" field
+           - If the activity name is changed, update the dictionary key
+        
+        **Important:**
+        - Preserve all existing fields that are not being changed
+        - Do NOT modify the "participants" array - students are enrolled separately
+        - Ensure schedule string matches schedule_details
+        - Time format must be 24-hour (HH:MM)
+        - If renaming, ensure you maintain the entire activity object structure

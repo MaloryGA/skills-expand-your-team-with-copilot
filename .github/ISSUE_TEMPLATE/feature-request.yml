@@ -1,0 +1,140 @@
+name: Feature Request
+description: Suggest a new feature for the activities website
+title: "[Feature]: "
+labels: ["enhancement", "feature"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        Suggest new functionality to improve the activities management system.
+        
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: What new feature would you like to add?
+      placeholder: Describe the feature and what it should do
+    validations:
+      required: true
+      
+  - type: textarea
+    id: problem-solved
+    attributes:
+      label: What problem does this solve?
+      description: Why do we need this feature?
+      placeholder: Explain the problem or need this feature addresses
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Type of Feature
+      description: What kind of feature is this?
+      options:
+        - New view or display option
+        - New filtering/sorting capability
+        - Student/teacher functionality
+        - Data management
+        - Reporting or export
+        - Other
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: Who will use this feature?
+      description: Who is the primary user?
+      options:
+        - Teachers
+        - Students
+        - Both teachers and students
+        - Administrators
+    validations:
+      required: true
+      
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User Story
+      description: Describe how someone would use this feature
+      placeholder: |
+        As a [teacher/student/admin], I want to [action] so that [benefit].
+        
+        Example: As a teacher, I want to export a list of all registered students so that I can create attendance sheets.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: suggested-approach
+    attributes:
+      label: Suggested Implementation (optional)
+      description: Do you have ideas on how to build this?
+      placeholder: Add any technical suggestions, examples from other websites, or specific requirements
+    validations:
+      required: false
+      
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this feature is complete?
+      placeholder: |
+        - [ ] Feature is accessible to appropriate users
+        - [ ] Feature works as described
+        - [ ] Feature doesn't break existing functionality
+        - [ ] (Add specific criteria for your feature)
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature?
+      options:
+        - Nice to have
+        - Would be very useful
+        - Important - needed soon
+        - Critical - blocking work
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would be helpful?
+      placeholder: Screenshots, mockups, examples, related features, etc.
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        ### Implementation Notes for Copilot
+        
+        **Analysis required:**
+        1. Determine which files need to be modified based on feature type:
+           - Frontend (HTML/CSS/JS): `src/static/`
+           - Backend API: `src/backend/routers/`
+           - Database: `src/backend/database.py`
+        
+        **Planning steps:**
+        1. Break down the feature into specific tasks
+        2. Identify required changes to database schema (if any)
+        3. Design API endpoints (if needed)
+        4. Plan UI changes
+        5. Consider edge cases and error handling
+        
+        **Implementation approach:**
+        - Make changes incrementally
+        - Test each component as you build
+        - Maintain consistency with existing code style
+        - Add appropriate error messages
+        - Keep the user experience simple (as required by copilot-instructions.md)
+        - Use only HTML, CSS, JavaScript, and Python (no other languages)
