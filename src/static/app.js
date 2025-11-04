@@ -401,7 +401,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Handle difficulty filter
-      if (currentDifficulty) {
+      // Empty string means show all activities (no filter)
+      // "All" means show only activities without difficulty level
+      if (currentDifficulty && currentDifficulty !== "") {
         queryParams.push(`difficulty_level=${encodeURIComponent(currentDifficulty)}`);
       }
 
