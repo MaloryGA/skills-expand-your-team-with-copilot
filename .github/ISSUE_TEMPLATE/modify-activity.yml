@@ -134,7 +134,7 @@ body:
         
         **Important:**
         - Preserve all existing fields that are not being changed
-        - Do NOT modify the "participants" array unless explicitly requested
+        - Do NOT modify the "participants" array - students are enrolled separately
         - Ensure schedule string matches schedule_details
         - Time format must be 24-hour (HH:MM)
         - If renaming, ensure you maintain the entire activity object structure

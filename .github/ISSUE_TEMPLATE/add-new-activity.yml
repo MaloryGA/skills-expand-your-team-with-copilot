@@ -130,7 +130,7 @@ body:
         ```python
         "Activity Name": {
             "description": "Activity description here",
-            "schedule": "Days, Start Time - End Time",
+            "schedule": "Mondays and Wednesdays, 3:30 PM - 5:00 PM",
             "schedule_details": {
                 "days": ["Monday", "Wednesday"],
                 "start_time": "15:30",
